@@ -58,7 +58,10 @@ export default function Sidebar() {
       const avatar_url = (session?.user?.user_metadata as any)?.avatar_url ?? null;
       setUser(email ? { email, avatar_url } : null);
     });
-    return () => subscription.unsubscribe();
+    return () => {
+      cancelled = true;
+      subscription.unsubscribe();
+    };
   }, [supabase]);
 
   useEffect(() => {
@@ -82,7 +85,8 @@ export default function Sidebar() {
 
   async function signIn() {
     const redirect = new URL('/auth/callback', window.location.origin);
-    redirect.searchParams.set('next', pathname || '/generate');
+    const nextPath = (pathname || '/generate') + (typeof window !== 'undefined' ? window.location.search : '');
+    redirect.searchParams.set('next', nextPath);
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'github',
       options: { redirectTo: redirect.toString(), skipBrowserRedirect: true },
