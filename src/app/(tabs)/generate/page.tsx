@@ -1,8 +1,10 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { createClientBrowser } from '@/lib/supabase-browser';
+
 
 const RESOLUTIONS = [
   { value: '1024x1024', label: '1024 × 1024 (1:1)' },
@@ -15,7 +17,7 @@ const RESOLUTIONS = [
 const COLORS = ['#f04438', '#f97316', '#10b981', '#60a5fa', '#a855f7', '#e5e7eb'];
 
 
-export default function GeneratePage() {
+function GenerateInner() {
   const supabase = useMemo(() => createClientBrowser(), []);
   const sp = useSearchParams();
 
@@ -264,5 +266,19 @@ export default function GeneratePage() {
         </section>
       </div>
     </main>
+  );
+}
+
+export default function GeneratePage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="mx-auto w-full max-w-[1180px] px-6 pb-16 pt-12 md:px-12">
+          <div className="text-white/70">Loading…</div>
+        </main>
+      }
+    >
+      <GenerateInner />
+    </Suspense>
   );
 }
