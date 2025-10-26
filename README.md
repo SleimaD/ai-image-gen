@@ -1,5 +1,14 @@
 # AI Image Generator
 
+> **Live demo:** https://aiimagegen-phi.vercel.app  
+> Deployed on Vercel · Auth & DB via Supabase · Image generation with Hugging Face (FLUX.1-schnell)
+
+[![Live](https://img.shields.io/badge/demo-online-brightgreen)](https://aiimagegen-phi.vercel.app)
+[![Vercel](https://img.shields.io/badge/hosted_on-Vercel-black)](https://vercel.com/)
+[![Next.js](https://img.shields.io/badge/Next.js-15-000)](https://nextjs.org/)
+[![Supabase](https://img.shields.io/badge/Supabase-Postgres-3ECF8E)](https://supabase.com/)
+[![HuggingFace](https://img.shields.io/badge/Hugging%20Face-FLUX.1--schnell-ffcc00)](https://huggingface.co/)
+
 Full-stack AI Image Generator built as part of the [DevChallenges.io](https://devchallenges.io/) challenge.  
 Users can generate images with prompts, view them in a feed, save favorites into their collection, and explore their generation history — all with authentication and persistence.
 
@@ -65,6 +74,14 @@ Users can generate images with prompts, view them in a feed, save favorites into
 
 
 ⸻
+
+## Live
+
+- Frontend: https://aiimagegen-phi.vercel.app
+- Backend: Next.js API Routes (serverless on Vercel)
+- Database & Auth: Supabase (PostgreSQL + Storage)
+
+---
 
 ## Acknowledgements
 
